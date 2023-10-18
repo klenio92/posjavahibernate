@@ -21,8 +21,13 @@ public class HibernateUtil {
 			e.printStackTrace();
 		}
 	}
-public static EntityManager getEntityManager() {
-	return factory.createEntityManager();
-}
-	
+
+	public static EntityManager getEntityManager() {
+		return factory.createEntityManager();
+	}
+
+	public static Object getPrimaryKey(Object entity) { // retorna a primarykey
+		return factory.getPersistenceUnitUtil().getIdentifier(entity);
+	}
+
 }
