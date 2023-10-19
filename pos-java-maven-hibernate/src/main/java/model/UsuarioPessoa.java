@@ -1,10 +1,14 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.NamedQueries;
 
@@ -22,6 +26,17 @@ public class UsuarioPessoa {
 	private String nome;
 	private String sobrenome;
 	private String email;
+
+	@OneToMany(mappedBy = "usuarioPessoa", fetch = FetchType.EAGER)
+	private List<TelefoneUser> telefoneUsers;
+
+	public List<TelefoneUser> getTelefoneUsers() {
+		return telefoneUsers;
+	}
+
+	public void setTelefoneUsers(List<TelefoneUser> telefoneUsers) {
+		this.telefoneUsers = telefoneUsers;
+	}
 
 	public Long getId() {
 		return id;
